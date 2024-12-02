@@ -293,13 +293,21 @@ namespace UWPHook
                 Log.Error(exception.Message);
             }
 
+
             if (games != null)
             {
+                SafellyCreateTmpGridDirectory(tmpGridDirectory);
+
+                if (games.Length > 1)
+                {
+                    var select = new SelectImagesWindow(api);
+                    await select.LoadImages(games);
+                    select.ShowDialog();
+                }
+
                 var game = games[0];
                 Log.Verbose("Detected Game: " + game.ToString());
-                UInt64 gameId = GenerateSteamGridAppId(appName, appTarget);
-
-                SafellyCreateTmpGridDirectory(tmpGridDirectory);
+                UInt64 gameId = GenerateSteamGridAppId(appName, appTarget);                 
 
                 var gameGridsVertical = api.GetGameGrids(game.Id, "600x900,342x482,660x930");
                 var gameGridsHorizontal = api.GetGameGrids(game.Id, "460x215,920x430");

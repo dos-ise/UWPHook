@@ -1,6 +1,6 @@
 ﻿namespace UWPHook.SteamGridDb
 {
-    class GameResponse
+    public class GameResponse
     {
         /// <summary>
         /// SteamGridDB id of the game

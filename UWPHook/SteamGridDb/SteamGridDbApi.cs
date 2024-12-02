@@ -8,7 +8,7 @@ using Serilog;
 
 namespace UWPHook.SteamGridDb
 {
-    class SteamGridDbApi
+    public class SteamGridDbApi
     {
         private const string BASE_URL = "https://www.steamgriddb.com/api/v2/";
 
